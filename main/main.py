@@ -146,10 +146,12 @@ st.pyplot(fig4)
 st.markdown("</div>", unsafe_allow_html=True)
 
 # Summary Section
-st.markdown("""
+st.markdown(f"""
 <div class="card">
     <div class="chart-title">Summary</div>
-    <p><b>Total Listings:</b> {}</p>
-    <p><b>Filtered Listings:</b> {}</p>
+    <p><b>Total Listings:</b> {len(housing_df)}</p>
+    <p><b>Filtered Listings:</b> {len(filtered_df)}</p>
+    <p><b>Average Price:</b> ${filtered_df['price'].mean():.2f}</p>
+    <p><b>Price Range:</b> ${filtered_df['price'].min():.2f} - ${filtered_df['price'].max():.2f}</p>
 </div>
-""".format(len(housing_df), len(filtered_df)), unsafe_allow_html=True)
+""", unsafe_allow_html=True)
