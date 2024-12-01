@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import json
 
 # Page Configuration
-st.set_page_config(page_title="Housing Explorer", page_icon="🏡", layout="wide")
+st.set_page_config(page_title="Dashboard", page_icon="🏡", layout="wide")
 
 # CSS Styling for UI
 st.markdown("""
@@ -30,6 +30,7 @@ st.markdown("""
             font-weight: bold;
             color: black;
             margin-bottom: 10px;
+            margin-top: -10px;
             text-align: center;
         }
 
@@ -70,7 +71,7 @@ st.markdown("""
 
 @st.cache_data
 def fetch_housing_data_from_file():
-    """Fetch housing data from a JSON file."""
+    """Fetch housing data"""
     with open('listings.json', 'r') as file:
         data = json.load(file)
     return pd.DataFrame(data)
@@ -84,8 +85,8 @@ housing_df['bedrooms'] = housing_df['Details'].apply(lambda x: int(x.get('Bedroo
 housing_df['distance'] = housing_df['Details'].apply(lambda x: float(x.get('Distance', '0').split()[0]) if x.get('Distance', '').split() else 0.0)
 
 # Page Header
-st.markdown("<div class='main-title'>Housing Explorer</div>", unsafe_allow_html=True)
-st.markdown("<div class='sub-title'>Find the perfect housing options with detailed visualizations and filters</div>", unsafe_allow_html=True)
+st.markdown("<div class='main-title'> Your Dashboard </div>", unsafe_allow_html=True)
+st.markdown("<div class='sub-title'>find your new home with detailed visualizations and filters</div>", unsafe_allow_html=True)
 st.markdown("<div class='line'></div>", unsafe_allow_html=True)  # Add horizontal line
 
 # Filters Section
